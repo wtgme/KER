@@ -10,6 +10,7 @@ from datetime import datetime
 
 import sys
 
+print('Start time ', datetime.now())
 
 cdb = CDB()
 # cdb.load_dict("/home/ubuntu/Tao/KER/medcat_models/0.2.6.2 - snomed_us_ext_names_umls_clean_primary_1M.dat")
@@ -69,3 +70,5 @@ for name, text in df[['row_id', 'text']].values:
 #             print(name)
         batch = []
 json.dump(docs, open('data/medcat/batch' + str(bt) +'.json', 'w'))    
+
+print('End time ', datetime.now())

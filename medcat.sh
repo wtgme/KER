@@ -2,9 +2,9 @@
 #SBATCH --job-name=med51
 #SBATCH --partition=brc,shared
 #SBATCH --output=output.array.%A.%a
-#SBATCH --array=0-200
+#SBATCH --array=21,26,39,61,91,95,176
 #SBATCH -n 5
-#SBATCH --time=0-1:00 
+#SBATCH --time=0-1:30 
 #SBATCH --mem=25480
 
 conda activate medcat 

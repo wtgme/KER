@@ -2,8 +2,11 @@ import scispacy
 import spacy
 import pandas as pd
 import sys
+from datetime import datetime
 
 from scispacy.linking import EntityLinker
+
+print('Start time ', datetime.now())
 
 nlp = spacy.load("en_core_sci_scibert")
 nlp.add_pipe("scispacy_linker", config={"resolve_abbreviations": True, "name": "umls"})

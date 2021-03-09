@@ -1,10 +1,11 @@
 #!/bin/bash -l
-#SBATCH --job-name=sci51
+#SBATCH --nodes=1
+#SBATCH --job-name=sci52
 #SBATCH --partition=brc,shared
 #SBATCH --output=output.array.%A.%a
-#SBATCH --array=113-1000
+#SBATCH --array=0-1000
 #SBATCH -n 5
-#SBATCH --time=0-1:00 
+#SBATCH --time=0-2:00 
 #SBATCH --mem=20480
 
 conda activate py3 
