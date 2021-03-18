@@ -1,10 +1,11 @@
 #!/bin/bash -l
+#SBATCH --nodes=1
 #SBATCH --job-name=med51
 #SBATCH --partition=brc,shared
 #SBATCH --output=output.array.%A.%a
-#SBATCH --array=21,26,39,61,91,95,176
+#SBATCH --array=0-1000
 #SBATCH -n 5
-#SBATCH --time=0-1:30 
+#SBATCH --time=0-2:00
 #SBATCH --mem=25480
 
 conda activate medcat 

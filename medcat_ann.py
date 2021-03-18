@@ -38,11 +38,11 @@ cat.spacy_cat.MIN_CONCEPT_LENGTH = 2
 notes = pd.read_csv("data/mimic_notes.csv")
 
 
-batch_len = 1000
+batch_len = 200
 for bt in range(batch_len):
     print(datetime.now(), '  Batch ', bt, ' to process')
     # sql_query = 'select * from noteevents_new_date where row_id%' + str(10000) + '=' + str(i)
-    df = notes[notes['row_id']%1000 == bt]
+    df = notes[notes['row_id']%batch_len == bt]
 
     batch_size = 1000 # Use 10k if you have a lot of documents
     batch = []
@@ -61,7 +61,7 @@ for bt in range(batch_len):
 
 
         if len(batch) >= batch_size or (cnt == len(df) and len(batch) > 0):
-            res = cat.multi_processing(batch, nproc=5, batch_size=batch_size // 100) # Use the correct number of processors
+            res = cat.multi_processing(batch, nproc=15, batch_size=batch_size // 100) # Use the correct number of processors
 
             for name, doc in res:
                 if name not in docs:
