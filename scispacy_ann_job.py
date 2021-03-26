@@ -93,6 +93,7 @@ for row_id, subject_id, text in df[['row_id', 'subject_id', 'text']].values:
             annot['start_char'] = ent.start_char
             annot['end_char'] = ent.end_char
             annot['text'] = ent.text
+            annot['cui'] = umls_ent[0]
             entity = (linker.kb.cui_to_entity[umls_ent[0]])
             annot['name'] = entity.canonical_name
             annot['types'] = ','.join(entity.types)
