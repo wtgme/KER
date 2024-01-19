@@ -98,6 +98,7 @@ for row_id, subject_id, text in df[['row_id', 'subject_id', 'text']].values:
             annot['name'] = entity.canonical_name
             annot['types'] = ','.join(entity.types)
             annot['ann_id'] = str(row_id) + str(ent.start_char)
+            annot['sentence'] = ent.sent.text
             annots.append(annot)
 #                 dlist.append([row_id, subject_id, ent.start_char, ent.end_char, ent.text, umls_ent[0], umls_ent[1]])
     dlist[row_id] = annots
@@ -106,6 +107,6 @@ for row_id, subject_id, text in df[['row_id', 'subject_id', 'text']].values:
 
 
 # data.to_csv('data/scispacy/batch' + str(i) +'.csv', index=None)
-json.dump(dlist, open('data/scispacy/batch' + str(i) +'.json', 'w'))  
+json.dump(dlist, open('data/scispacy_sentences/batch' + str(i) +'.json', 'w'))  
     
 print('End time ', datetime.now())
